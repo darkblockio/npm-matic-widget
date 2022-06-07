@@ -6,8 +6,8 @@ import PolygonDarkblockWidget from "../lib/MaticWidget"
 const stories = storiesOf("Polygon Darkblock Widget", module)
 
 // TODO: look for Polygon NFT's values here
-const contractAddress = "0xfd48de401e23f619a25a0edcf6d249216860fbe6"
-const tokenId = "30553606573219150352991292921105176340809048341686170040023897679188805550081"
+const contractAddress = "0xda2ec25b733fa79af72277b920639bbb30716164"
+const tokenId = "23"
 
 stories.add("test", () => {
   const cb = (param1) => {
@@ -32,6 +32,14 @@ stories.add("test", () => {
     }, [])
     return (
       <div style={{ maxWidth: "700px" }}>
+        <strong>Testing With: </strong>
+        <hr/>
+        <div>
+          Contract address: {contractAddress}
+          <br/>
+          Token_id: {tokenId}
+        </div>
+
         <PolygonDarkblockWidget
           contractAddress={contractAddress}
           tokenId={tokenId}
