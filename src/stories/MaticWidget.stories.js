@@ -32,6 +32,14 @@ stories.add("test", () => {
     }, [])
     return (
       <div style={{ maxWidth: "700px" }}>
+        <strong>Testing With: </strong>
+        <hr/>
+        <div>
+          Contract address: {contractAddress}
+          <br/>
+          Token_id: {tokenId}
+        </div>
+
         <PolygonDarkblockWidget
           contractAddress={contractAddress}
           tokenId={tokenId}
