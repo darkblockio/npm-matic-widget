@@ -1292,10 +1292,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.0.tgz#65b12f12db55188422070e34687bf3af09870922"
   integrity sha512-rZ6vufeY/UjAgtyiJ4WvfF6XP6HizIyOfbZOg0RnecIwjrvH8Am3nN1BpKnnPZunYAkUcPPXDhwbxOtGop8cfQ==
 
-"@darkblock.io/shared-components@0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@darkblock.io/shared-components/-/shared-components-0.0.20.tgz#a5e56ca16d2c9acf20294234bce57ff428018877"
-  integrity sha512-Zl4gvnDMABw8ZdNxuCiYUtH+to27klc4jNoYAQUcQ3p7uH9YHG/4lgEdNwtDlStXfnphjuQKMtyTDI8h9HfdPA==
+"@darkblock.io/shared-components@0.0.24":
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/@darkblock.io/shared-components/-/shared-components-0.0.24.tgz#134f1225676ac8223c137a40a4148be71d296f56"
+  integrity sha512-UBhRyxqkIZooMTyHRPzelcwOId0yqgu4yDzgeCeztdN5IVLm53BZDZh4QGZQB23FYIY2QzS3TQ6copFPFk1fxg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^6.1.1"
     "@fortawesome/free-solid-svg-icons" "^6.1.1"
