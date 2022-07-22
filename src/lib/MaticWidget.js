@@ -41,61 +41,46 @@ const PolygonDarkblockWidget = ({
     callback(state.value)
 
     if (!w3) {
-      send({ type: 'NO_WALLET' })
-    }
-
-    if (state.value === "idle") {
-      send({ type: "FETCH_ARWEAVE" })
-    }
-
-    if (state.value === "started") {
-      const connectWallet = async () => {
-        if (window.ethereum) {
-          const accounts = await window.ethereum.request({
-            method: "eth_requestAccounts",
-          })
-
-          if (accounts) {
-            console.log("accounts: ", accounts)
-            setAddress(accounts[0])
-            send({ type: "CONNECT_WALLET" })
-          }
-        }
+      send({ type: "NO_WALLET" })
+    } else {
+      if (state.value === "idle") {
+        send({ type: "FETCH_ARWEAVE" })
       }
 
-      connectWallet()
-    }
+      if (state.value === "started") {
+        const connectWallet = async () => {
+          if (window.ethereum) {
+            const accounts = await window.ethereum.request({
+              method: "eth_requestAccounts",
+            })
 
-    if (state.value === "wallet_connected") {
-      // send({ type: "SIGN" })
-    }
+            if (accounts) {
+              console.log("accounts: ", accounts)
+              setAddress(accounts[0])
+              send({ type: "CONNECT_WALLET" })
+            }
+          }
+        }
 
-    if (state.value === "signing") {
-      authenticate(w3)
-    }
+        connectWallet()
+      }
 
-    if (state.value === "authenticated") {
-      send({ type: "DECRYPT" })
-    }
+      if (state.value === "wallet_connected") {
+        // send({ type: "SIGN" })
+      }
 
-    if (state.value === "decrypting") {
-      setMediaURL(
-        utils.getProxyAsset(
-          state.context.artId,
-          epochSignature,
-          state.context.tokenId,
-          state.context.contractAddress,
-          null,
-          platform
-        )
-      )
+      if (state.value === "signing") {
+        authenticate(w3)
+      }
 
-      let arrTemp = []
+      if (state.value === "authenticated") {
+        send({ type: "DECRYPT" })
+      }
 
-      state.context.display.stack.map((db) => {
-        arrTemp.push(
+      if (state.value === "decrypting") {
+        setMediaURL(
           utils.getProxyAsset(
-            db.artId,
+            state.context.artId,
             epochSignature,
             state.context.tokenId,
             state.context.contractAddress,
@@ -103,16 +88,31 @@ const PolygonDarkblockWidget = ({
             platform
           )
         )
-      })
 
-      setStackMediaURLs(arrTemp)
+        let arrTemp = []
 
-      setTimeout(() => {
-        send({ type: "SUCCESS" })
-      }, 1000)
-    }
+        state.context.display.stack.map((db) => {
+          arrTemp.push(
+            utils.getProxyAsset(
+              db.artId,
+              epochSignature,
+              state.context.tokenId,
+              state.context.contractAddress,
+              null,
+              platform
+            )
+          )
+        })
 
-    if (state.value === "display") {
+        setStackMediaURLs(arrTemp)
+
+        setTimeout(() => {
+          send({ type: "SUCCESS" })
+        }, 1000)
+      }
+
+      if (state.value === "display") {
+      }
     }
   }, [state.value])
 
