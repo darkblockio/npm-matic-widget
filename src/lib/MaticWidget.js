@@ -85,7 +85,8 @@ const PolygonDarkblockWidget = ({
             state.context.tokenId,
             state.context.contractAddress,
             null,
-            platform
+            platform,
+            address
           )
         )
 
@@ -99,7 +100,8 @@ const PolygonDarkblockWidget = ({
               state.context.tokenId,
               state.context.contractAddress,
               null,
-              platform
+              platform,
+              address
             )
           )
         })
