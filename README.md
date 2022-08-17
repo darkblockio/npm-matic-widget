@@ -20,32 +20,54 @@ import "@darkblock.io/matic-widget"
 require("@darkblock.io/matic-widget")
 ```
 
-## Testing locally
+### Example
 
-Run `yarn storybook`
+```
+import { PolygonDarkblockWidget } from "@darkblock.io/matic-widget"
 
-Or test the widget on the Nextjs app
+const Widget = () => {
+  ...
 
-- Run `yarn build-lib`. This will generate the `dist` folder with the following files
+  const contractAddress = 'nft contract address'
+  const tokenId = 'nft token id'
+  
+  return (
+    <PolygonDarkblockWidget
+      contractAddress={contractAddress}
+      tokenId={tokenId
+      w3={web3}
+      cb={(p) => console.log(p)}
+      config={config}
+    />
+  )
+}
 
-  ```
-  dist
-  ├── README.md
-  ├── index.es.js
-  ├── index.js
-  └── package.json
-  ```
+export default Widget
 
-- Copy `index.js` into the Nextjs App `components` folder and rename it to `matic.js`
+```
 
-- Use `matic.js` instead of the npm package by changing
+### Example
 
-  ```
-  const PolygonDarkblockWidget = dynamic(() => import('@darkblock.io/matic-widget'), { ssr: false })
-  ```
+```
+import { PolygonUpgradeWidget } from "@darkblock.io/matic-widget"
 
-  to
+const Widget = () => {
+  const apiKey = '** contact darkblock for apikey **'
+  const contractAddress = 'nft contract address'
+  const tokenId = 'nft token id'
 
-  ```
-  const PolygonDarkblockWidget = dynamic(() => import('./matic'), { ssr: false })
-  ```
+  return (
+    <PolygonUpgradeWidget
+      apiKey={apiKey} 
+      contractAddress={contractAddress}
+      tokenId={tokenId
+      w3={web3}
+      cb={(p) => console.log(p)}
+      config={config}
+    />
+  )
+}
+
+export default Widget
+
+```

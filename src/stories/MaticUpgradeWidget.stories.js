@@ -1,22 +1,25 @@
 import Web3 from "web3"
 import React, { useEffect, useState } from "react"
 import { storiesOf } from "@storybook/react"
-import PolygonDarkblockWidget from "../lib/MaticWidget"
+import PolygonUpgradeWidget from "../lib/MaticUpgradeWidget"
 
-const stories = storiesOf("Polygon Darkblock Widget", module)
+const stories = storiesOf("Polygon Upgrade Widget", module)
 
-// TODO: look for Polygon NFT's values here
-const contractAddress = "0xda2ec25b733fa79af72277b920639bbb30716164"
-const tokenId = "23"
-
-stories.add("test", () => {
+stories.add("Add Content", () => {
   const cb = (param1) => {
-    console.log(param1)
+    console.log("upgrade cb", param1)
   }
 
   const Widget = () => {
     const [web3, setWeb3] = useState(null)
     const [loaded, setLoaded] = useState(false)
+    const contractAddress = "0xda2ec25b733fa79af72277b920639bbb30716164"
+    const token_id = "23"
+
+    const apiKey = "dgtqh26mv8mtgemq4tys47d4a2ax" //internal DB key - not for public use
+
+    let nftBlockchain = "Polygon"
+    if (["avalanche", "polygon"].includes(nftBlockchain.toLowerCase())) nftBlockchain = "ERC-1155"
 
     useEffect(() => {
       if (window.ethereum) {
@@ -41,14 +44,15 @@ stories.add("test", () => {
     return (
       <div style={{ maxWidth: "700px" }}>
         {loaded && (
-          <PolygonDarkblockWidget
+          <PolygonUpgradeWidget
+            apiKey={apiKey}
             contractAddress={contractAddress}
-            tokenId={tokenId}
+            tokenId={token_id}
             w3={web3}
             cb={cb}
             config={{
               customCssClass: "custom-class",
-              debug: true,
+              debug: false,
               imgViewer: {
                 showRotationControl: true,
                 autoHideControls: true,

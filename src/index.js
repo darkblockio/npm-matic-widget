@@ -1,2 +1,4 @@
 import PolygonDarkblockWidget from "./lib/MaticWidget"
-export default PolygonDarkblockWidget
+import PolygonUpgradeWidget from "./lib/MaticUpgradeWidget"
+
+export default { PolygonDarkblockWidget, PolygonUpgradeWidget }

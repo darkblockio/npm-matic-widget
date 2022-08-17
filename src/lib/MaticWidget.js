@@ -55,7 +55,6 @@ const PolygonDarkblockWidget = ({
             })
 
             if (accounts) {
-              console.log("accounts: ", accounts)
               setAddress(accounts[0])
               send({ type: "CONNECT_WALLET" })
             }
