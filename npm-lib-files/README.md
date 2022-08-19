@@ -53,15 +53,44 @@ const cb = (param) => {
 ### Example
 
 ```
-import PolygonDarkblockWidget from "@darkblock.io/matic-widget"
+import { PolygonDarkblockWidget } from "@darkblock.io/matic-widget"
 
 const Widget = () => {
   ...
 
+  const contractAddress = 'nft contract address'
+  const tokenId = 'nft token id'
+  
   return (
     <PolygonDarkblockWidget
-      contractAddress="0x495f947276749ce646f68ac8c248420045cb7b5e"
-      tokenId="30553606573219150352991292921105176340809048341686170040023897672591735783425"
+      contractAddress={contractAddress}
+      tokenId={tokenId
+      w3={web3}
+      cb={(p) => console.log(p)}
+      config={config}
+    />
+  )
+}
+
+export default Widget
+
+```
+
+### Example
+
+```
+import { PolygonUpgradeWidget } from "@darkblock.io/matic-widget"
+
+const Widget = () => {
+  const apiKey = '** contact darkblock for apikey **'
+  const contractAddress = 'nft contract address'
+  const tokenId = 'nft token id'
+
+  return (
+    <PolygonUpgradeWidget
+      apiKey={apiKey} 
+      contractAddress={contractAddress}
+      tokenId={tokenId
       w3={web3}
       cb={(p) => console.log(p)}
       config={config}
