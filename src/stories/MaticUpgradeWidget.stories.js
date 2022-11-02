@@ -16,7 +16,7 @@ stories.add("Add Content", () => {
     const contractAddress = "0xda2ec25b733fa79af72277b920639bbb30716164"
     const token_id = "23"
 
-    const apiKey = "dgtqh26mv8mtgemq4tys47d4a2ax" //internal DB key - not for public use
+    const apiKey = "" //Darkblock API key goes here
 
     let nftBlockchain = "Polygon"
     if (["avalanche", "polygon"].includes(nftBlockchain.toLowerCase())) nftBlockchain = "ERC-1155"
