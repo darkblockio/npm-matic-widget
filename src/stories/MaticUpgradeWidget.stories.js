@@ -59,6 +59,7 @@ stories.add("Add Content", () => {
                 controlsFadeDelay: true,
               },
             }}
+            dev={false}
           />
         )}
       </div>
