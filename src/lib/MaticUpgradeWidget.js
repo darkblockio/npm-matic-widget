@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useMachine } from "@xstate/react"
 import { utils, Upgrader, upgradeMachine } from "@darkblock.io/shared-components"
-import signTypedData from "../utils/signTypedData"
+import signTypedData, { SIGNING_TYPE } from "../utils/signTypedData"
 
 const platform = "Polygon"
 
@@ -106,7 +106,7 @@ const PolygonUpgradeWidget = ({
   const signFileUploadData = async () => {
     let signatureData = `${state.context.platform}${state.context.nftData.nft.contract}:${state.context.nftData.nft.token}${state.context.fileHash}`
 
-    await signTypedData(signatureData, w3, state.context.platform)
+    await signTypedData(signatureData, w3, SIGNING_TYPE.upgradeNft)
       .then((response) => {
         state.context.signature = response
         send({ type: "SIGNING_SUCCESS" })

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Stack, utils, widgetMachine } from "@darkblock.io/shared-components"
 import { useMachine } from "@xstate/react"
+import signTypedData, { SIGNING_TYPE } from "../utils/signTypedData"
 
 const platform = "Polygon"
 
@@ -134,12 +135,17 @@ const PolygonDarkblockWidget = ({
       ) {
         send({ type: "FAIL" })
       } else {
-        signature = await signData(address, sessionToken, w3, () => {
-          send({ type: "SUCCESS" })
+        signature = await signTypedData(sessionToken, w3, SIGNING_TYPE.accessAuth).then((response) => {
+          return response
         })
+
+        if (signature) {
+          send({ type: "SUCCESS" })
+        } else {
+          send({ type: "FAIL" })
+        }
       }
     } catch (e) {
-      console.log(e)
       signature ? send({ type: "FAIL" }) : send({ type: "CANCEL" })
     }
 
