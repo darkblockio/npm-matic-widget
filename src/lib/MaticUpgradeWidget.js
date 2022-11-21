@@ -18,10 +18,11 @@ const PolygonUpgradeWidget = ({
       controlsFadeDelay: true,
     },
   },
-  network,
+  network = "mumbai",
   dev = false,
 }) => {
-  const platform = network.toLowerCase() === "mainnet" ? "Polygon" : "Polygon-Mumbai"
+  const upperNetwork = network.charAt(0).toUpperCase() + network.slice(1)
+  const platform = network.toLowerCase() === "mainnet" ? "Polygon" : `Polygon-${upperNetwork}`
 
   const [state, send] = useMachine(() => upgradeMachine(tokenId, contractAddress, platform, dev))
   const [address, setAddress] = useState(null)
