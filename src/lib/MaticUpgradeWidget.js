@@ -3,8 +3,6 @@ import { useMachine } from "@xstate/react"
 import { utils, Upgrader, upgradeMachine } from "@darkblock.io/shared-components"
 import signTypedData, { SIGNING_TYPE } from "../utils/signTypedData"
 
-const platform = "Polygon"
-
 const PolygonUpgradeWidget = ({
   apiKey = null,
   contractAddress,
@@ -22,6 +20,8 @@ const PolygonUpgradeWidget = ({
   },
   dev = false,
 }) => {
+  const platform = dev ? "Polygon-Mumbai" : "Polygon"
+
   const [state, send] = useMachine(() => upgradeMachine(tokenId, contractAddress, platform, dev))
   const [address, setAddress] = useState(null)
 

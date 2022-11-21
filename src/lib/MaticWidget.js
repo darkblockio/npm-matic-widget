@@ -3,8 +3,6 @@ import { Stack, utils, widgetMachine } from "@darkblock.io/shared-components"
 import { useMachine } from "@xstate/react"
 import signTypedData, { SIGNING_TYPE } from "../utils/signTypedData"
 
-const platform = "Polygon"
-
 const PolygonDarkblockWidget = ({
   contractAddress,
   tokenId,
@@ -21,6 +19,8 @@ const PolygonDarkblockWidget = ({
   },
   dev = false,
 }) => {
+  const platform = dev ? "Polygon-Mumbai" : "Polygon"
+
   const [state, send] = useMachine(() => widgetMachine(tokenId, contractAddress, platform, dev))
   const [address, setAddress] = useState(null)
   const [mediaURL, setMediaURL] = useState("")
