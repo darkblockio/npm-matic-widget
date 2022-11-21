@@ -17,9 +17,10 @@ const PolygonDarkblockWidget = ({
       controlsFadeDelay: true,
     },
   },
+  network,
   dev = false,
 }) => {
-  const platform = dev ? "Polygon-Mumbai" : "Polygon"
+  const platform = network === "Polygon-Mumbai" ? "Polygon-Mumbai" : "Polygon"
 
   const [state, send] = useMachine(() => widgetMachine(tokenId, contractAddress, platform, dev))
   const [address, setAddress] = useState(null)
