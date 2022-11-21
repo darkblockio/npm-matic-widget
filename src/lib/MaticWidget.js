@@ -20,7 +20,7 @@ const PolygonDarkblockWidget = ({
   network,
   dev = false,
 }) => {
-  const platform = network === "Polygon-Mumbai" ? "Polygon-Mumbai" : "Polygon"
+  const platform = network.toLowerCase() === "mainnet" ? "Polygon" : "Polygon-Mumbai"
 
   const [state, send] = useMachine(() => widgetMachine(tokenId, contractAddress, platform, dev))
   const [address, setAddress] = useState(null)
