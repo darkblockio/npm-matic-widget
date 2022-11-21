@@ -18,7 +18,7 @@ const PolygonUpgradeWidget = ({
       controlsFadeDelay: true,
     },
   },
-  network = "mumbai",
+  network = "mainnet",
   dev = false,
 }) => {
   const upperNetwork = network.charAt(0).toUpperCase() + network.slice(1)
