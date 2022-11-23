@@ -132,6 +132,7 @@ const PolygonUpgradeWidget = ({
           send({ type: "RESET" })
         }
       }}
+      dev={dev}
     />
   )
 }
