@@ -90,11 +90,12 @@ const PolygonUpgradeWidget = ({
     try {
       setTimeout(async () => {
         creatorDataWithOwner = await utils.getCreator(contractAddress, tokenId, platform, dev)
-        if (
-          creatorDataWithOwner &&
-          creatorDataWithOwner.creator_address &&
-          creatorDataWithOwner.creator_address.toLowerCase() === address.toLowerCase()
-        ) {
+
+        const verifyOwnership = creatorDataWithOwner.all_creators.find(
+          (creator) => creator.toLowerCase() === address.toLowerCase()
+        )
+
+        if (verifyOwnership) {
           send({ type: "SUCCESS" })
         } else {
           send({ type: "FAIL" })
