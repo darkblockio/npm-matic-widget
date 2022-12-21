@@ -18,6 +18,12 @@ stories.add("test", () => {
     const [web3, setWeb3] = useState(null)
     const [loaded, setLoaded] = useState(false)
 
+    const dbConfigOptions = {
+      include: [],
+      exclude: [],
+      sort: [],
+    }
+
     useEffect(() => {
       if (window.ethereum) {
         window.ethereum
@@ -56,6 +62,7 @@ stories.add("test", () => {
               },
             }}
             dev={false}
+            dbConfig={dbConfigOptions}
           />
         )}
       </div>
